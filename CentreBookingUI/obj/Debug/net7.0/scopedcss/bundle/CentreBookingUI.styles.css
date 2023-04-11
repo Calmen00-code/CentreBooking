@@ -1,0 +1,140 @@
+/* _content/CentreBookingUI/Shared/MainLayout.razor.rz.scp.css */
+.page[b-huw94xf4ip] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-huw94xf4ip] {
+    flex: 1;
+}
+
+.sidebar[b-huw94xf4ip] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-huw94xf4ip] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-huw94xf4ip]  a, .top-row .btn-link[b-huw94xf4ip] {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+    }
+
+    .top-row a:first-child[b-huw94xf4ip] {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row:not(.auth)[b-huw94xf4ip] {
+        display: none;
+    }
+
+    .top-row.auth[b-huw94xf4ip] {
+        justify-content: space-between;
+    }
+
+    .top-row a[b-huw94xf4ip], .top-row .btn-link[b-huw94xf4ip] {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-huw94xf4ip] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-huw94xf4ip] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-huw94xf4ip] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row[b-huw94xf4ip], article[b-huw94xf4ip] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+/* _content/CentreBookingUI/Shared/NavMenu.razor.rz.scp.css */
+.navbar-toggler[b-dvxw4pcgbj] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row[b-dvxw4pcgbj] {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand[b-dvxw4pcgbj] {
+    font-size: 1.1rem;
+}
+
+.oi[b-dvxw4pcgbj] {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item[b-dvxw4pcgbj] {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type[b-dvxw4pcgbj] {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type[b-dvxw4pcgbj] {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item[b-dvxw4pcgbj]  a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+
+.nav-item[b-dvxw4pcgbj]  a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+
+.nav-item[b-dvxw4pcgbj]  a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+
+@media (min-width: 641px) {
+    .navbar-toggler[b-dvxw4pcgbj] {
+        display: none;
+    }
+
+    .collapse[b-dvxw4pcgbj] {
+        /* Never collapse the sidebar for wide screens */
+        display: block;
+    }
+    
+    .nav-scrollable[b-dvxw4pcgbj] {
+        /* Allow sidebar to scroll for tall menus */
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+    }
+}

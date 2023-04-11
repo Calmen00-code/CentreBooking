@@ -1,0 +1,41 @@
+﻿@page "/admin"
+@inject IJSRuntime jsRuntime
+
+<h3>Admin</h3>
+
+<input placeholder="admin" type="text" @bind="admin"/>
+<br />
+<input placeholder="password" type="password" @bind="password"/>
+<br />
+<br />
+<button @onclick="@(() => isAdmin())">Login</button>
+
+@code {
+    private static readonly string ADMIN = "admin";
+    private static readonly string PASSWORD = "adminpass";
+
+    private string? admin;
+    private string? password;
+
+    private bool isAdmin()
+    {
+        if (admin == null && password == null)
+        {
+            // ShowAlert("Admin and password field is empty!");
+            return false;
+        }
+
+        if (!admin.Equals(ADMIN) || !password.Equals(PASSWORD))
+        {
+            // ShowAlert("Unsuccessful login");
+            return false;
+        }
+        // ShowAlert("Successful login!");
+        return true;
+    }
+
+    private void ShowAlert(string msg)
+    {
+        jsRuntime.InvokeVoidAsync("alert", msg);
+    }
+}
