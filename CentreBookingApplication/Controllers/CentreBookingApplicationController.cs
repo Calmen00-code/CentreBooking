@@ -9,7 +9,7 @@ namespace CentreBookingApplication.Controllers
     public class CentreBookingApplicationController : ControllerBase
     {
         private readonly HttpClient _httpClient;
-        private static readonly string _apiurl = "https://localhost:7225/api/";
+        private static readonly string _apiurl = "https://localhost:7225/api/CentreBooking";
 
         public CentreBookingApplicationController(HttpClient httpClient)
         {
@@ -20,8 +20,8 @@ namespace CentreBookingApplication.Controllers
         [Route("get-centres")]
         public async Task<IActionResult> GetCentres()
         {
-            string route = _apiurl + "get-centres";
-            
+            string route = _apiurl + "/get-centres";
+            System.Diagnostics.Debug.WriteLine("Route: " + route);
             var response = await _httpClient.GetAsync(route);
 
             if (response.IsSuccessStatusCode)
