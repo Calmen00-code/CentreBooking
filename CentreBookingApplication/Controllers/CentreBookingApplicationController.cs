@@ -20,7 +20,7 @@ namespace CentreBookingApplication.Controllers
         [Route("get-centres")]
         public async Task<IActionResult> GetCentres()
         {
-            string route = _apiurl + "get-centres"
+            string route = _apiurl + "get-centres";
             
             var response = await _httpClient.GetAsync(route);
 
