@@ -14,10 +14,13 @@ namespace CentreBookingDatabase.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           /**
+            * defining Centre and Booking relationship in the Model
+            */
             modelBuilder.Entity<Booking>()
-                .HasOne(b => b.Centre)
-                .WithMany(c => c.Bookings)
-                .HasForeignKey(b => b.CentreName);
+                .HasOne(b => b.Centre) // Booking is linked to Centre
+                .WithMany(c => c.Bookings) // A centre can have more than one booking(s)
+                .HasForeignKey(b => b.CentreName); // Booking has a foreign key link to Centre 
         }
     }
 }
