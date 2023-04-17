@@ -14,24 +14,26 @@
     private static readonly string ADMIN = "admin";
     private static readonly string PASSWORD = "adminpass";
 
+    [Inject]
+    private NavigationManager? NavigationManager { get; set; }
     private string? admin;
     private string? password;
 
-    private bool isAdmin()
+    private void isAdmin()
     {
         if (admin == null && password == null)
         {
-            // ShowAlert("Admin and password field is empty!");
-            return false;
+            ShowAlert("Admin and password field is empty!");
+            return;
         }
 
         if (!admin.Equals(ADMIN) || !password.Equals(PASSWORD))
         {
-            // ShowAlert("Unsuccessful login");
-            return false;
+            ShowAlert("Unsuccessful login");
+            return;
         }
         // ShowAlert("Successful login!");
-        return true;
+        NavigationManager.NavigateTo("admin-menu");
     }
 
     private void ShowAlert(string msg)

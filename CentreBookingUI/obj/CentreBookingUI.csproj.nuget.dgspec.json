@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBookingUI\\CentreBookingUI\\CentreBookingUI.csproj": {}
+    "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingUI\\CentreBookingUI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBookingUI\\CentreBookingUI\\CentreBookingUI.csproj": {
+    "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingUI\\CentreBookingUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBookingUI\\CentreBookingUI\\CentreBookingUI.csproj",
+        "projectUniqueName": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingUI\\CentreBookingUI.csproj",
         "projectName": "CentreBookingUI",
-        "projectPath": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBookingUI\\CentreBookingUI\\CentreBookingUI.csproj",
+        "projectPath": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingUI\\CentreBookingUI.csproj",
         "packagesPath": "C:\\Users\\calme\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBookingUI\\CentreBookingUI\\obj\\",
+        "outputPath": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingUI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\calme\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,16 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
