@@ -1,12 +1,49 @@
-﻿<ul>
-    @foreach (var centre in Centres)
-    {
-        <li>@centre.Name</li>
-    }
-</ul>
+﻿@using CentreBookingUI.Models;
+
+@inject IJSRuntime jsRuntime
+@inject HttpClient HttpClient
+
+<br />
+@if (centres != null && centres.Any())
+{
+    <ul>
+        @foreach (var centre in centres)
+        {
+            <li>@centre.CentreName</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Loading centres...</p>
+}
+<br />
 
 @code {
-    [Parameter]
-    public List<Centre> Centres { get; set; }
+    private static readonly string _apiurl = "https://localhost:7229/api/CentreBookingApplication/";
 
+    [Parameter]
+    public List<Centre>? centres { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        string api_request = _apiurl + "get-centres";
+
+        var response = await HttpClient.GetAsync(api_request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            centres = await response.Content.ReadFromJsonAsync<List<Centre>>();
+            System.Diagnostics.Debug.WriteLine("Centres: " + centres);
+        }
+        else
+        {
+            ShowAlert("Unable to load centre");
+        }
+    }
+
+    private void ShowAlert(string msg)
+    {
+        jsRuntime.InvokeVoidAsync("alert", msg);
+    }
 }
