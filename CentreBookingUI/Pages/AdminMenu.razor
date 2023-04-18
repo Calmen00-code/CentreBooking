@@ -5,13 +5,45 @@
 
 <DisplayCentre />
 
-<button @onclick="AddCentre">Add Centre</button>
+@* Add Centre button is hidden when the form to register new centre is shown *@
+@if (!IsFormVisible)
+{
+    <button @onclick="AddCentre">Register New Centre</button>
+}
+
+@if (IsFormVisible)
+{
+    <div>
+        <form>
+            <input type="text" placeholder="Centre Name" @bind="NewCentre"/>
+            <button type="submit" @onsubmit="OnCentreSubmit">Confirm</button>
+        </form>
+        <br/>
+        <button @onclick="CancelAdd">Cancel</button>
+    </div>
+}
 
 @code {
-    // private List<Centre> Centres { get; set; }
+    private bool IsFormVisible = false;
+    private string? NewCentre { get; set; }
 
     private void AddCentre()
     {
-        
+        IsFormVisible = true;
+    }
+
+    private void CancelAdd()
+    {
+        IsFormVisible = false;
+    }
+
+    private void OnCentreSubmit()
+    {
+        /**
+         * TODO: HTTP request to add centre here
+         */
+
+        // form should be hidden when it is done submitting
+        IsFormVisible = false;
     }
 }
