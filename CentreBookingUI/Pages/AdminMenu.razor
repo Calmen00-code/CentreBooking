@@ -1,7 +1,9 @@
 ﻿@page "/admin-menu"
 
+@using CentreBookingUI.Models
 @using CentreBookingUI.Shared
 
+@inject IJSRuntime jsRuntime
 @inject HttpClient HttpClient
 
 <h3>Admin Menu</h3>
@@ -18,7 +20,7 @@
 {
     <div>
         <form>
-            <input type="text" placeholder="Centre Name" @bind="NewCentre"/>
+            <input type="text" placeholder="Centre Name" @bind="NewCentreName"/>
             <button type="submit" @onsubmit="OnCentreSubmit">Confirm</button>
         </form>
         <br/>
@@ -27,8 +29,11 @@
 }
 
 @code {
+    private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";
+
+    private DisplayCentre displayCentre;
     private bool IsFormVisible = false;
-    private string? NewCentre { get; set; }
+    private string? NewCentreName { get; set; }
 
     private void AddCentre()
     {
@@ -40,13 +45,38 @@
         IsFormVisible = false;
     }
 
-    private void OnCentreSubmit()
+    private async void OnCentreSubmit()
     {
         /**
          * TODO: HTTP request to add centre here
          */
 
-        // form should be hidden when it is done submitting
-        IsFormVisible = false;
+        string api_request_url = _apiurl + "post-centre";
+
+        // building the centre object to be passed into POST API
+        Centre centre = new Centre();
+        centre.CentreName = NewCentreName;
+        centre.Bookings = null;
+
+        var response = await HttpClient.PostAsJsonAsync(api_request_url, centre);
+        if (response.IsSuccessStatusCode)
+        {
+            // form should be hidden when it is done submitting
+            IsFormVisible = false;
+
+            // refresh child component (DisplayCentre.razor) 
+            // to show the updated list
+            displayCentre.Refresh();
+        }
+        else
+        {
+            ShowAlert("Error while registering new centre");
+        }
+
+    }
+
+    private void ShowAlert(string msg)
+    {
+        jsRuntime.InvokeVoidAsync("alert", msg);
     }
 }

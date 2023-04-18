@@ -20,7 +20,7 @@ else
 <br />
 
 @code {
-    private static readonly string _apiurl = "https://localhost:7229/api/CentreBookingApplication/";
+    private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";
 
     [Parameter]
     public List<Centre>? centres { get; set; }
@@ -34,7 +34,6 @@ else
         if (response.IsSuccessStatusCode)
         {
             centres = await response.Content.ReadFromJsonAsync<List<Centre>>();
-            System.Diagnostics.Debug.WriteLine("Centres: " + centres);
         }
         else
         {
@@ -45,5 +44,17 @@ else
     private void ShowAlert(string msg)
     {
         jsRuntime.InvokeVoidAsync("alert", msg);
+    }
+
+     /***
+     * Although DisplayCentre.razor is shared by ADMIN and GUEST,
+     * 
+     * This will only be called by ADMIN when a new centre is added
+     * to refresh the list of centre again.
+    */
+    public async void Refresh()
+    {
+        await OnInitializedAsync();
+        StateHasChanged();
     }
 }
