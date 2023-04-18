@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CentreBookingApplication.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Text.Json;
 
 namespace CentreBookingApplication.Controllers
 {
@@ -21,23 +24,40 @@ namespace CentreBookingApplication.Controllers
         public async Task<IActionResult> GetCentres()
         {
             string route = _apiurl + "get-centres";
-            System.Diagnostics.Debug.WriteLine("Route: " + route);
             var response = await _httpClient.GetAsync(route);
 
             if (response.IsSuccessStatusCode)
             {
                 string responseContent = await response.Content.ReadAsStringAsync();
-
-                // Return the response content
                 return Ok(responseContent);
             }
             else
             {
-                // Get the error message from the response content
                 string errorContent = await response.Content.ReadAsStringAsync();
                 string errorMessage = $"Error: {errorContent}";
+                return new BadRequestObjectResult(errorMessage);
+            }
+        }
 
-                // Return a custom error message
+        [HttpPost]
+        [Route("post-centre")]
+        public async Task<IActionResult> PostCentre([FromBody] Centre centre)
+        {
+            var jsonContent = JsonContent.Create(centre);
+            string route = _apiurl + "post-centre";
+            var response = await _httpClient.PostAsync(route, jsonContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseStream = await response.Content.ReadAsStreamAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var result = await JsonSerializer.DeserializeAsync<Centre>(responseStream, options);
+                return Ok(result);
+            }
+            else
+            {
+                string errorContent = await response.Content.ReadAsStringAsync();
+                string errorMessage = $"Error: {errorContent}";
                 return new BadRequestObjectResult(errorMessage);
             }
         }
