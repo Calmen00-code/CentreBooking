@@ -10,7 +10,7 @@
 
 <h3>Admin Menu</h3>
 
-<DisplayCentre ref="displayCentre"/>
+<DisplayCentre @ref="displayCentre"/>
 
 @* Button for register new centre is hidden when the form to register new centre is shown *@
 @if (!IsFormVisible)
@@ -33,7 +33,7 @@
 @code {
     private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";
 
-    private DisplayCentre displayCentre;
+    private DisplayCentre? displayCentre;
 
     private bool IsFormVisible = false;
     private string? NewCentreName { get; set; }
