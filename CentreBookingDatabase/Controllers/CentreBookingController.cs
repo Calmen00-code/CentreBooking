@@ -19,7 +19,7 @@ namespace CentreBookingDatabase.Controllers
 
         [HttpGet]
         [Route("get-centres")]
-        public string GetCentres()
+        public IActionResult GetCentres()
         {
             SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("CentreBooking").ToString());
             SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Centre", conn);
@@ -41,22 +41,26 @@ namespace CentreBookingDatabase.Controllers
 
             if (centres.Count > 0)
             {
-                return JsonConvert.SerializeObject(centres);
+                return Ok(centres);
             }
             else
             {
+                /*
                 response.StatusCode = 100;
                 response.Message = "No data found";
                 return JsonConvert.SerializeObject(response);
+                */
+                return new BadRequestObjectResult("No data found");
             }
 
         }
 
         [HttpPost]
         [Route("post-centre")]
-        public string PostCentre([FromBody] Centre centre)
+        public IActionResult PostCentre([FromBody] Centre centre)
         {
             SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("CentreBooking").ToString());
+            // TODO: Use better queries instead of string like this
             string sql_script = "INSERT INTO Centre (CentreName) VALUES (\'" + centre.CentreName + "\');";
             SqlCommand sqlCommand = new SqlCommand(sql_script, conn);
             Response response = new Response();
@@ -69,23 +73,25 @@ namespace CentreBookingDatabase.Controllers
                 {
                     response.StatusCode = 200;
                     response.Message = "Centre is successfully registered!";
-                    System.Diagnostics.Debug.WriteLine("SUCCESSFUL");
+                    return Ok(response);
                 }
                 else
                 {
                     response.StatusCode = 500;
                     response.Message = "Internal server error, centre is not registered";
-                    System.Diagnostics.Debug.WriteLine("Internal server error, centre is not registered");
+                    return new BadRequestObjectResult(response);
                 }
             }
             catch (SqlException) 
             {
-                System.Diagnostics.Debug.WriteLine("SQL Exception");
                 response.StatusCode = 500;
                 response.Message = "Internal server error";
+                return new BadRequestObjectResult(response);
             }
-            conn.Close();
-            return JsonConvert.SerializeObject(response);
+            finally 
+            { 
+                conn.Close(); 
+            }
         }
     }
 }
