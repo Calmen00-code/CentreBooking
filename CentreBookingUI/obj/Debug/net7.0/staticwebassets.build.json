@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "d7EMqbmXt2iCCwNv8zN5b6FxlM+FgCsbU66/b0QHf7w=",
+  "Hash": "aECBglVjHb8p2vIuNx9v3kldm3yIhAV5uj0iaSHBTpI=",
   "Source": "CentreBookingUI",
   "BasePath": "_content/CentreBookingUI",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\calme\\.nuget\\packages\\blazored.toast\\4.1.0\\staticwebassets\\Blazored.Toast.bundle.scp.css",
+      "SourceId": "Blazored.Toast",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\calme\\.nuget\\packages\\blazored.toast\\4.1.0\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Toast",
+      "RelativePath": "Blazored.Toast.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\calme\\.nuget\\packages\\blazored.toast\\4.1.0\\staticwebassets\\Blazored.Toast.bundle.scp.css"
+    },
     {
       "Identity": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingUI\\obj\\Debug\\net7.0\\scopedcss\\bundle\\CentreBookingUI.styles.css",
       "SourceId": "CentreBookingUI",

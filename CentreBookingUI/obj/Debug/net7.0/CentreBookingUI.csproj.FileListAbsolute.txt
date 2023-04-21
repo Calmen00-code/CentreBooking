@@ -103,3 +103,10 @@ C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebA
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\obj\Debug\net7.0\CentreBookingUI.csproj.CopyComplete
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Blazored.Toast.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Microsoft.AspNetCore.Components.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingUI\bin\Debug\net7.0\Microsoft.JSInterop.dll

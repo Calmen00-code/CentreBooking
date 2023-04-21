@@ -1,11 +1,46 @@
 {
   "Version": 1,
-  "Hash": "N4CD+DRr2TSnP5bMgQfIq3vtUfnN13w+Cmzj4Ar/3D0=",
+  "Hash": "2BLZqIO9vqmdneQ9T310irB6zegFPldr+HkjNGwUDvc=",
   "Source": "CentreBookingDatabase",
   "BasePath": "_content/CentreBookingDatabase",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\calme\\.nuget\\packages\\blazored.toast\\4.1.0\\staticwebassets\\Blazored.Toast.bundle.scp.css",
+      "SourceId": "Blazored.Toast",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\calme\\.nuget\\packages\\blazored.toast\\4.1.0\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Toast",
+      "RelativePath": "Blazored.Toast.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\calme\\.nuget\\packages\\blazored.toast\\4.1.0\\staticwebassets\\Blazored.Toast.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingDatabase\\obj\\Debug\\net7.0\\scopedcss\\bundle\\CentreBookingDatabase.styles.css",
+      "SourceId": "CentreBookingDatabase",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingDatabase\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
+      "BasePath": "_content/CentreBookingDatabase",
+      "RelativePath": "CentreBookingDatabase.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "CurrentProject",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ApplicationBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingDatabase\\obj\\Debug\\net7.0\\scopedcss\\bundle\\CentreBookingDatabase.styles.css"
+    }
+  ]
 }

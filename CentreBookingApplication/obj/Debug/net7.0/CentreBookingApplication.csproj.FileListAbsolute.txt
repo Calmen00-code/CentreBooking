@@ -31,3 +31,11 @@ C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebA
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\obj\Debug\net7.0\CentreBookingApplication.pdb
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\obj\Debug\net7.0\CentreBookingApplication.genruntimeconfig.cache
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\obj\Debug\net7.0\ref\CentreBookingApplication.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\CentreBookingApplication.staticwebassets.runtime.json
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Blazored.Toast.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.AspNetCore.Components.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.JSInterop.dll
