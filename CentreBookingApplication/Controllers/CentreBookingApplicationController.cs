@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CentreBookingApplication.Controllers
 {
@@ -35,7 +36,7 @@ namespace CentreBookingApplication.Controllers
             {
                 string errorContent = await response.Content.ReadAsStringAsync();
                 string errorMessage = $"Error: {errorContent}";
-                return new BadRequestObjectResult(errorMessage);
+                return new NotFoundObjectResult(errorMessage);
             }
         }
 

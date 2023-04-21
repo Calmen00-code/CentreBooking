@@ -4,7 +4,15 @@
 @inject HttpClient HttpClient
 
 <br />
-@if (centres != null && centres.Any())
+@if (centres == null)
+{
+    <p>No list available</p>
+}
+else if (centres != null && !centres.Any())
+{
+    <p>Loading centres...</p>
+}
+else if (centres != null && centres.Any())
 {
     <ul>
         @foreach (var centre in centres)
@@ -13,17 +21,13 @@
         }
     </ul>
 }
-else
-{
-    <p>Loading centres...</p>
-}
 <br />
 
 @code {
     private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";
 
     [Parameter]
-    public List<Centre>? centres { get; set; }
+    public List<Centre> centres { get; set; } = new List<Centre>();
 
     protected override async Task OnInitializedAsync()
     {
@@ -31,9 +35,19 @@ else
 
         var response = await HttpClient.GetAsync(api_request);
 
+        /**
+         * if the error is due to no centre data available in the DB,
+         * we do not throw an alert, but we show No list available instead.
+         *
+         * we will only throw this alert whenever something unexpected happened in DB.
+         */
         if (response.IsSuccessStatusCode)
         {
             centres = await response.Content.ReadFromJsonAsync<List<Centre>>();
+        }
+        else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+        {
+            centres = null;
         }
         else
         {
@@ -46,12 +60,12 @@ else
         jsRuntime.InvokeVoidAsync("alert", msg);
     }
 
-     /***
-     * Although DisplayCentre.razor is shared by ADMIN and GUEST,
-     * 
-     * This will only be called by ADMIN when a new centre is added
-     * to refresh the list of centre again.
-    */
+    /***
+    * Although DisplayCentre.razor is shared by ADMIN and GUEST,
+    *
+    * This will only be called by ADMIN when a new centre is added
+    * to refresh the list of centre again.
+       */
     public async void RefreshCentreList()
     {
         await OnInitializedAsync();

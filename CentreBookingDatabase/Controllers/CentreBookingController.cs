@@ -50,7 +50,7 @@ namespace CentreBookingDatabase.Controllers
                 response.Message = "No data found";
                 return JsonConvert.SerializeObject(response);
                 */
-                return new BadRequestObjectResult("No data found");
+                return new NotFoundObjectResult("No data found");
             }
 
         }
@@ -77,7 +77,7 @@ namespace CentreBookingDatabase.Controllers
                 }
                 else
                 {
-                    response.StatusCode = 500;
+                    response.StatusCode = 400;
                     response.Message = "Internal server error, centre is not registered";
                     return new BadRequestObjectResult(response);
                 }
