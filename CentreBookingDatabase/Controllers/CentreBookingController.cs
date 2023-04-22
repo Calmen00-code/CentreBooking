@@ -61,8 +61,9 @@ namespace CentreBookingDatabase.Controllers
         {
             SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("CentreBooking").ToString());
             // TODO: Use better queries instead of string like this
-            string sql_script = "INSERT INTO Centre (CentreName) VALUES (\'" + centre.CentreName + "\');";
+            string sql_script = "INSERT INTO Centre (CentreName) VALUES (@CentreName);";
             SqlCommand sqlCommand = new SqlCommand(sql_script, conn);
+            sqlCommand.Parameters.AddWithValue("@CentreName", centre.CentreName);
             Response response = new Response();
 
             try
@@ -73,6 +74,49 @@ namespace CentreBookingDatabase.Controllers
                 {
                     response.StatusCode = 200;
                     response.Message = "Centre is successfully registered!";
+                    return Ok(response);
+                }
+                else
+                {
+                    response.StatusCode = 400;
+                    response.Message = "Internal server error, centre is not registered";
+                    return new BadRequestObjectResult(response);
+                }
+            }
+            catch (SqlException) 
+            {
+                response.StatusCode = 500;
+                response.Message = "Internal server error";
+                return new BadRequestObjectResult(response);
+            }
+            finally 
+            { 
+                conn.Close(); 
+            }
+        }
+
+        [HttpPost]
+        [Route("post-booking")]
+        public IActionResult PostBooking([FromBody] Booking booking)
+        {
+            SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("CentreBooking").ToString());
+            // TODO: Use better queries instead of string like this
+            string sql_script = "INSERT INTO Booking (Booking) VALUES (@GuestName, @StartDate, @EndDate, @CentreName);";
+            SqlCommand sqlCommand = new SqlCommand(sql_script, conn);
+            sqlCommand.Parameters.AddWithValue("@GuestName", booking.GuestName);
+            sqlCommand.Parameters.AddWithValue("@StartDate", booking.StartDate);
+            sqlCommand.Parameters.AddWithValue("@EndDate", booking.EndDate);
+            sqlCommand.Parameters.AddWithValue("@CentreName", booking.CentreName);
+            Response response = new Response();
+
+            try
+            {
+                conn.Open();
+                int rowsAffected = sqlCommand.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    response.StatusCode = 200;
+                    response.Message = "Booking is successfully registered!";
                     return Ok(response);
                 }
                 else
