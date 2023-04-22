@@ -27,7 +27,7 @@ else if (centres != null && centres.Any())
             @foreach (var centre in centres)
             {
                 <li>@centre.CentreName</li> 
-                <button>Book</button>
+                <button @onclick="BookCentre">Book</button>
             }
         }
     </ul>
@@ -37,8 +37,10 @@ else if (centres != null && centres.Any())
 @code {
     private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";
 
-    [Parameter]
     public List<Centre> centres { get; set; } = new List<Centre>();
+
+    [Inject]
+    private NavigationManager? NavigationManager { get; set; }
 
     [Parameter]
     public bool isAdmin { get; set; } = false;
@@ -79,10 +81,15 @@ else if (centres != null && centres.Any())
     *
     * This will only be called by ADMIN when a new centre is added
     * to refresh the list of centre again.
-       */
+    */
     public async void RefreshCentreList()
     {
         await OnInitializedAsync();
         StateHasChanged();
+    }
+
+    public void BookCentre()
+    {
+        NavigationManager.NavigateTo("book-page");
     }
 }
