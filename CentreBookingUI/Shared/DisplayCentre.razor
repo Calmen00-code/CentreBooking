@@ -15,9 +15,20 @@ else if (centres != null && !centres.Any())
 else if (centres != null && centres.Any())
 {
     <ul>
-        @foreach (var centre in centres)
+        @if (isAdmin)
         {
-            <li>@centre.CentreName</li>
+            @foreach (var centre in centres)
+            {
+                <li>@centre.CentreName</li>
+            }
+        }
+        else
+        {
+            @foreach (var centre in centres)
+            {
+                <li>@centre.CentreName</li> 
+                <button>Book</button>
+            }
         }
     </ul>
 }
@@ -28,6 +39,9 @@ else if (centres != null && centres.Any())
 
     [Parameter]
     public List<Centre> centres { get; set; } = new List<Centre>();
+
+    [Parameter]
+    public bool isAdmin { get; set; } = false;
 
     protected override async Task OnInitializedAsync()
     {
