@@ -2,9 +2,23 @@
 
 <h3>Booking for @CentreName</h3>
 
+<label for="start-date">Start Date</label>
+<InputDate id="start-date" @bind-Value="StartDate"/>
+<label for="end-date">End Date</label>
+<InputDate id="end-date" @bind-Value="EndDate"/>
 
 @code {
     [Parameter]
     public string CentreName { get; set; } = "";
+
+    private DateOnly StartDate { get; set; }
+    private DateOnly EndDate { get; set; }
+
+    protected override void OnInitialized()
+    {
+        StartDate = DateOnly.FromDateTime(DateTime.Today);
+        EndDate = DateOnly.FromDateTime(DateTime.Today);
+    }
+
 
 }
