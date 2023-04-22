@@ -1,7 +1,10 @@
-﻿@page "/book-page"
+﻿@page "/book-page/{CentreName}"
 
-<h3>Booking</h3>
+<h3>Booking for @CentreName</h3>
+
 
 @code {
+    [Parameter]
+    public string CentreName { get; set; } = "";
 
 }

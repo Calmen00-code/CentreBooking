@@ -27,7 +27,7 @@ else if (centres != null && centres.Any())
             @foreach (var centre in centres)
             {
                 <li>@centre.CentreName</li> 
-                <button @onclick="BookCentre">Book</button>
+                <button @onclick="(e) => BookCentre(centre.CentreName)">Book</button>
             }
         }
     </ul>
@@ -88,8 +88,8 @@ else if (centres != null && centres.Any())
         StateHasChanged();
     }
 
-    public void BookCentre()
+    public void BookCentre(string centreName)
     {
-        NavigationManager.NavigateTo("book-page");
+        NavigationManager.NavigateTo("/book-page/" + centreName);
     }
 }
