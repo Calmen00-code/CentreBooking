@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Data;
 
 namespace CentreBookingDatabase.Controllers
@@ -100,12 +101,11 @@ namespace CentreBookingDatabase.Controllers
         public IActionResult PostBooking([FromBody] Booking booking)
         {
             SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("CentreBooking").ToString());
-            // TODO: Use better queries instead of string like this
-            string sql_script = "INSERT INTO Booking (Booking) VALUES (@GuestName, @StartDate, @EndDate, @CentreName);";
+            string sql_script = "INSERT INTO Booking (GuestName, StartDate, EndDate, CentreName) VALUES (@GuestName, @StartDate, @EndDate, @CentreName);";
             SqlCommand sqlCommand = new SqlCommand(sql_script, conn);
             sqlCommand.Parameters.AddWithValue("@GuestName", booking.GuestName);
-            sqlCommand.Parameters.AddWithValue("@StartDate", booking.StartDate);
-            sqlCommand.Parameters.AddWithValue("@EndDate", booking.EndDate);
+            sqlCommand.Parameters.AddWithValue("@StartDate", booking.StartDate.ToString());
+            sqlCommand.Parameters.AddWithValue("@EndDate", booking.EndDate.ToString());
             sqlCommand.Parameters.AddWithValue("@CentreName", booking.CentreName);
             Response response = new Response();
 

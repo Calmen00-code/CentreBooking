@@ -39,3 +39,11 @@ C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebA
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Web.dll
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.AspNetCore.Metadata.dll
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.JSInterop.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Humanizer.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\System.CodeDom.dll

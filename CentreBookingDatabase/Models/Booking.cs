@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CentreBookingDatabase.Models
 {
@@ -8,8 +9,9 @@ namespace CentreBookingDatabase.Models
         public DateOnly? EndDate { get; set; }
         public string? GuestName { get; set; }
 
+        [Key]
         public string? CentreName { get; set; }
-        [ForeignKey("CentreName")]
+        // [ForeignKey("CentreName")]
         public Centre? Centre { get; set; }
     }
 }
