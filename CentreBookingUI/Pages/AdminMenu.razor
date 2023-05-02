@@ -75,6 +75,12 @@
         }
     }
 
+    private void ShowAlert(string msg)
+    {
+        jsRuntime.InvokeVoidAsync("alert", msg);
+    }
+
+    /*
     private void ShowSuccess(string msg)
     {
         ToastService.ShowSuccess(msg);
@@ -94,9 +100,6 @@
     {
         ToastService.ShowInfo(msg);
     } 
+    */
 
-    private void ShowAlert(string msg)
-    {
-        jsRuntime.InvokeVoidAsync("alert", msg);
-    }
 }

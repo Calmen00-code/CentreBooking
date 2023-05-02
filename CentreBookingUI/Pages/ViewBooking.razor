@@ -1,0 +1,18 @@
+﻿@page "/view-booking/{CentreName}"
+@inject HttpClient HttpClient
+
+<h3>Viewing booking(s) for @CentreName</h3>
+
+@code {
+    private static readonly string _apiurl = "";
+
+    [Parameter]
+    public string CentreName { get; set; } = "";
+
+    /*
+    protected override async Task OnInitializedAsync()
+    {
+        string api_request = _apirul         
+    }
+    */
+}

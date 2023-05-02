@@ -20,6 +20,7 @@ else if (centres != null && centres.Any())
             @foreach (var centre in centres)
             {
                 <li>@centre.CentreName</li>
+                <button @onclick="(e) => ViewBooking(centre.CentreName)">View Booking(s)</button>
             }
         }
         else
@@ -88,8 +89,19 @@ else if (centres != null && centres.Any())
         StateHasChanged();
     }
 
+     /***
+     * This function will only be executed by user
+    */
     public void BookCentre(string centreName)
     {
         NavigationManager.NavigateTo("/book-page/" + centreName);
+    }
+
+     /***
+     * This function will only be executed by admin
+    */
+    public void ViewBooking(string centreName)
+    {
+        NavigationManager.NavigateTo("/view-booking/" + centreName);
     }
 }

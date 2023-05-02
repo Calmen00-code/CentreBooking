@@ -1,0 +1,10 @@
+{
+    "guestName": "John Doe",
+    "startDate": "2023-05-01",
+    "endDate": "2023-05-10",
+    "centreName": "Animal Centre",
+    "centre": {
+      "centreName": "Animal Centre",
+      "Bookings": []
+  }
+}
