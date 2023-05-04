@@ -62,5 +62,15 @@ namespace CentreBookingApplication.Controllers
                 return new BadRequestObjectResult(errorMessage);
             }
         }
+
+        /*
+        [HttpGet]
+        [Route("get-booking/{centreName}")]
+        public  async Task<IActionResult> GetBooking(string centreName)
+        {
+
+        }
+        */
+
     }
 }

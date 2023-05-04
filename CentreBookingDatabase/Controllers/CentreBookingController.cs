@@ -137,5 +137,55 @@ namespace CentreBookingDatabase.Controllers
                 conn.Close(); 
             }
         }
+
+        [HttpGet]
+        [Route("get-booking/{centreName}")]
+        public IActionResult GetBooking(string centreName)
+        {
+            SqlConnection conn = new SqlConnection(_configuration.GetConnectionString("CentreBooking").ToString());
+            string sql_command = "SELECT * FROM Booking WHERE Booking.CentreName = \'" + centreName + "\';";
+            SqlDataAdapter adapter = new SqlDataAdapter(sql_command, conn);
+
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            List<Booking> bookings = new List<Booking>();
+            Response response = new Response();
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Booking booking = new Booking();
+                    booking.CentreName = dt.Rows[i]["CentreName"].ToString();
+
+                    DateTime startDateTime = (DateTime)dt.Rows[i]["StartDate"];
+                    DateOnly startDate = new DateOnly(startDateTime.Year, startDateTime.Month, startDateTime.Day);
+                    booking.StartDate = startDate;
+
+                    DateTime endDateTime = (DateTime)dt.Rows[i]["EndDate"];
+                    DateOnly endDate = new DateOnly(endDateTime.Year, endDateTime.Month, endDateTime.Day);
+                    booking.EndDate = endDate;
+
+                    booking.GuestName = dt.Rows[i]["GuestName"].ToString();
+
+                    bookings.Add(booking);
+                }
+            }
+
+            if (bookings.Count > 0)
+            {
+                return Ok(bookings);
+            }
+            else
+            {
+                /*
+                response.StatusCode = 100;
+                response.Message = "No data found";
+                return JsonConvert.SerializeObject(response);
+                */
+                return new NotFoundObjectResult("No data found");
+            }
+
+        }
     }
 }
