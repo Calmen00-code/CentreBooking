@@ -63,14 +63,26 @@ namespace CentreBookingApplication.Controllers
             }
         }
 
-        /*
         [HttpGet]
         [Route("get-booking/{centreName}")]
         public  async Task<IActionResult> GetBooking(string centreName)
         {
-
+            string route = _apiurl + "get-booking/" + centreName;
+            var response = await _httpClient.GetAsync(route);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var bookings = await response.Content.ReadAsStringAsync();
+                return Ok(bookings);
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound) 
+            {
+                return NotFound();
+            }
+            else
+            {
+                return StatusCode((int)response.StatusCode);
+            }
         }
-        */
-
     }
 }
