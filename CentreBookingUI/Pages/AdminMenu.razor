@@ -13,12 +13,12 @@
 <DisplayCentre @ref="displayCentre" isAdmin="true"/>
 
 @* Button for register new centre is hidden when the form to register new centre is shown *@
-@if (!IsFormVisible)
+@if (!IsRegistrationFormVisible)
 {
     <button @onclick="AddCentre">Register New Centre</button>
 }
 
-@if (IsFormVisible)
+@if (IsRegistrationFormVisible)
 {
     <div>
         <form @onsubmit="OnCentreSubmit">
@@ -35,17 +35,17 @@
 
     private DisplayCentre? displayCentre;
 
-    private bool IsFormVisible = false;
+    private bool IsRegistrationFormVisible = false;
     private string? NewCentreName { get; set; }
 
     private void AddCentre()
     {
-        IsFormVisible = true;
+        IsRegistrationFormVisible = true;
     }
 
     private void CancelAdd()
     {
-        IsFormVisible = false;
+        IsRegistrationFormVisible = false;
     }
 
     private async Task OnCentreSubmit()
@@ -60,7 +60,7 @@
         if (response.IsSuccessStatusCode)
         {
             // form should be hidden when it is done submitting
-            IsFormVisible = false;
+            IsRegistrationFormVisible = false;
             NewCentreName = "";
 
             // refresh child component (DisplayCentre.razor) 

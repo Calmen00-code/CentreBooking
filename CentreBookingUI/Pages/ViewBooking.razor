@@ -1,18 +1,63 @@
 ﻿@page "/view-booking/{CentreName}"
+
+@using CentreBookingUI.Models
 @inject HttpClient HttpClient
+@inject IJSRuntime jsRuntime
 
 <h3>Viewing booking(s) for @CentreName</h3>
 
+@if (bookings.Any())
+{
+    <ul>
+        @{
+            var guestGroups = bookings.GroupBy(b => b.GuestName);
+        }
+        @foreach (var group in guestGroups)
+        {
+            <li>
+                @group.Key
+                <ul>
+                    @foreach (var booking in group)
+                    {
+                        <li>Start Date: @booking.StartDate.ToString("yyyy-MM-dd")</li> 
+                        <li>End Date: @booking.EndDate.ToString("yyyy-MM-dd")</li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No bookings available in @CentreName</p>
+}
+
 @code {
-    private static readonly string _apiurl = "";
+    private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";
 
     [Parameter]
-    public string CentreName { get; set; } = "";
+    public string CentreName { get; set; }
 
-    /*
+    public List<Models.Booking> bookings { get; set; } = new List<Models.Booking>(); 
+
     protected override async Task OnInitializedAsync()
     {
-        string api_request = _apirul         
+        string api_request = _apiurl + "get-booking/" + CentreName;
+
+        var response = await HttpClient.GetAsync(api_request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            bookings = await response.Content.ReadFromJsonAsync<List<Models.Booking>>();    
+        }
+        else
+        {
+            ShowAlert("Could not retrieve booking information");
+        }
     }
-    */
+
+    private void ShowAlert(string msg)
+    {
+        jsRuntime.InvokeVoidAsync("alert", msg);
+    }
 }
