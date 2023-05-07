@@ -36,25 +36,74 @@
 
     private async Task OnBookingSubmit()
     {
-        string api_request_url = _apiurl + "post-booking";
-
-        // building the centre object to be passed into POST API
         Models.Booking booking = new Models.Booking();
         booking.CentreName = CentreName;
         booking.GuestName = GuestName;
         booking.StartDate = StartDate;
         booking.EndDate = EndDate;
 
-        var response = await HttpClient.PostAsJsonAsync(api_request_url, booking);
+        bool allowedToBook = await UserCanBook(booking);
+        if (allowedToBook)
+        {
+            string api_request_url = _apiurl + "post-booking";
+
+
+            var response = await HttpClient.PostAsJsonAsync(api_request_url, booking);
+            if (response.IsSuccessStatusCode)
+            {
+                ShowAlert("Booking completed!");
+                NavigationManager.NavigateTo("../");
+            }
+            else
+            {
+                ShowAlert("Error while registering your booking");
+            }
+        }
+    }
+
+    private async Task<bool> UserCanBook(Models.Booking booking)
+    {
+        if (StartDate < DateOnly.FromDateTime(DateTime.Now))
+        {
+            ShowAlert("Start date cannot be earlier than today's date!");
+            return false;
+        }
+
+        if (EndDate < DateOnly.FromDateTime(DateTime.Now))
+        {
+            ShowAlert("End date cannot be earlier than today's date!");
+            return false;
+        }
+
+        if (EndDate < StartDate)
+        {
+            ShowAlert("End date cannot be earlier than Start date!");
+            return false;
+        }
+
+        string api_request = _apiurl + "get-booking/" + CentreName;
+
+        var response = await HttpClient.GetAsync(api_request);
+
         if (response.IsSuccessStatusCode)
         {
-            ShowAlert("Booking completed!");
-            NavigationManager.NavigateTo("../");
+            List<Models.Booking> takenBookings = 
+                await response.Content.ReadFromJsonAsync<List<Models.Booking>>();    
+            foreach (var takenBooking in takenBookings)
+            {
+                if (takenBooking.EndDate > booking.StartDate)
+                {
+                    ShowAlert("Start Date: " + booking.StartDate.ToString("dd-MM-yyyy") + " has already been booked!");
+                    return false;
+                }
+            }
         }
         else
         {
-            ShowAlert("Error while registering your booking");
+            ShowAlert("Error while getting booking results");
+            return false;
         }
+        return true;
     }
 
     private void ShowAlert(string msg)
