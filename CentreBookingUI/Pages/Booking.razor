@@ -17,6 +17,8 @@
     <InputDate id="end-date" @bind-Value="EndDate"/>
     <button type="submit">Confirm</button>
 </form>
+<br />
+<button @onclick="NextAvailableBooking">Next Available Booking</button>
 
 @code {
     private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";
@@ -82,7 +84,6 @@
         }
 
         string api_request = _apiurl + "get-booking/" + CentreName;
-
         var response = await HttpClient.GetAsync(api_request);
 
         if (response.IsSuccessStatusCode)
@@ -91,19 +92,51 @@
                 await response.Content.ReadFromJsonAsync<List<Models.Booking>>();    
             foreach (var takenBooking in takenBookings)
             {
-                if (takenBooking.EndDate > booking.StartDate)
+                if (takenBooking.EndDate >= booking.StartDate)
                 {
                     ShowAlert("Start Date: " + booking.StartDate.ToString("dd-MM-yyyy") + " has already been booked!");
                     return false;
                 }
             }
         }
+        /*
+        else if (response.StatusCode != System.Net.HttpStatusCode.NotFound)
+        {
+            ShowAlert("Error while getting booking result");
+            return false;
+        }
+        */
+        return true;
+    }
+
+    public async void NextAvailableBooking()
+    {
+        string api_request = _apiurl + "get-booking/" + CentreName;
+        var response = await HttpClient.GetAsync(api_request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            List<Models.Booking> takenBookings = 
+                await response.Content.ReadFromJsonAsync<List<Models.Booking>>();
+
+            if (takenBookings.Count == 0)
+            {
+                ShowAlert("Next available date is " + DateOnly.FromDateTime(DateTime.Now).ToString("dd-MM-yyyy"));
+            }
+            else
+            {
+                List<Models.Booking> orderedByDate = takenBookings.OrderBy(date => date.EndDate).ToList();
+                Models.Booking latestBooking = orderedByDate[orderedByDate.Count - 1];
+                ShowAlert("Next available date is " + latestBooking.EndDate.AddDays(1).ToString("dd-MM-yyyy"));
+                // ShowAlert("Next available date is " + latestBooking.EndDate.ToString("dd-MM-yyyy"));
+            }
+        }
+        /*
         else
         {
             ShowAlert("Error while getting booking results");
-            return false;
         }
-        return true;
+        */
     }
 
     private void ShowAlert(string msg)

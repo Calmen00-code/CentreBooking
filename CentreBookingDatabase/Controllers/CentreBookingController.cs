@@ -104,8 +104,9 @@ namespace CentreBookingDatabase.Controllers
             string sql_script = "INSERT INTO Booking (GuestName, StartDate, EndDate, CentreName) VALUES (@GuestName, @StartDate, @EndDate, @CentreName);";
             SqlCommand sqlCommand = new SqlCommand(sql_script, conn);
             sqlCommand.Parameters.AddWithValue("@GuestName", booking.GuestName);
-            sqlCommand.Parameters.AddWithValue("@StartDate", booking.StartDate.ToString());
-            sqlCommand.Parameters.AddWithValue("@EndDate", booking.EndDate.ToString());
+            System.Diagnostics.Debug.WriteLine("Start Date: " + booking.StartDate.ToString());
+            sqlCommand.Parameters.AddWithValue("@StartDate", booking.StartDate.Value);
+            sqlCommand.Parameters.AddWithValue("@EndDate", booking.EndDate.Value);
             sqlCommand.Parameters.AddWithValue("@CentreName", booking.CentreName);
             Response response = new Response();
 
@@ -126,10 +127,11 @@ namespace CentreBookingDatabase.Controllers
                     return new BadRequestObjectResult(response);
                 }
             }
-            catch (SqlException) 
+            catch (SqlException e) 
             {
                 response.StatusCode = 500;
                 response.Message = "Internal server error";
+                System.Diagnostics.Debug.WriteLine("Error: " + e.Message);
                 return new BadRequestObjectResult(response);
             }
             finally 
