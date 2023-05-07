@@ -50,10 +50,6 @@ else
         {
             bookings = await response.Content.ReadFromJsonAsync<List<Models.Booking>>();    
         }
-        else
-        {
-            ShowAlert("Could not retrieve booking information");
-        }
     }
 
     private void ShowAlert(string msg)

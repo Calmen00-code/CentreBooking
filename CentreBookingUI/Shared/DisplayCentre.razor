@@ -19,12 +19,14 @@ else if (centres != null && centres.Any())
         {
             @foreach (var centre in centres)
             {
+                /*
                 <li style="display: inline-block;">
                     <span>@centre.CentreName</span>
                     <button @onclick="(e) => ViewBooking(centre.CentreName)">View Booking(s)</button>
                 </li>
-                <br />
-                <br />
+                */
+                <li>@centre.CentreName</li>
+                <button @onclick="(e) => ViewBooking(centre.CentreName)">View Booking(s)</button>
             }
         }
         else

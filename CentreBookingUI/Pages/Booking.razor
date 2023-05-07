@@ -1,16 +1,30 @@
 ﻿@page "/book-page/{CentreName}"
 
+@using CentreBookingUI.Models
+
+@inject HttpClient HttpClient
+@inject IJSRuntime jsRuntime
+@inject NavigationManager NavigationManager
+
 <h3>Booking for @CentreName</h3>
 
-<label for="start-date">Start Date</label>
-<InputDate id="start-date" @bind-Value="StartDate"/>
-<label for="end-date">End Date</label>
-<InputDate id="end-date" @bind-Value="EndDate"/>
+<form @onsubmit="OnBookingSubmit">
+    <label for="guest-name">Guest Name</label>
+    <input id="guest-name" type="text" @bind-value="GuestName"/>
+    <label for="start-date">Start Date</label>
+    <InputDate id="start-date" @bind-Value="StartDate"/>
+    <label for="end-date">End Date</label>
+    <InputDate id="end-date" @bind-Value="EndDate"/>
+    <button type="submit">Confirm</button>
+</form>
 
 @code {
+    private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";
+
     [Parameter]
     public string CentreName { get; set; } = "";
 
+    private string GuestName { get; set; } = "";
     private DateOnly StartDate { get; set; }
     private DateOnly EndDate { get; set; }
 
@@ -18,5 +32,33 @@
     {
         StartDate = DateOnly.FromDateTime(DateTime.Today);
         EndDate = DateOnly.FromDateTime(DateTime.Today);
+    }
+
+    private async Task OnBookingSubmit()
+    {
+        string api_request_url = _apiurl + "post-booking";
+
+        // building the centre object to be passed into POST API
+        Models.Booking booking = new Models.Booking();
+        booking.CentreName = CentreName;
+        booking.GuestName = GuestName;
+        booking.StartDate = StartDate;
+        booking.EndDate = EndDate;
+
+        var response = await HttpClient.PostAsJsonAsync(api_request_url, booking);
+        if (response.IsSuccessStatusCode)
+        {
+            ShowAlert("Booking completed!");
+            NavigationManager.NavigateTo("../");
+        }
+        else
+        {
+            ShowAlert("Error while registering your booking");
+        }
+    }
+
+    private void ShowAlert(string msg)
+    {
+        jsRuntime.InvokeVoidAsync("alert", msg);
     }
 }

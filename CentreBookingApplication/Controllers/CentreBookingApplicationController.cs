@@ -84,5 +84,28 @@ namespace CentreBookingApplication.Controllers
                 return StatusCode((int)response.StatusCode);
             }
         }
+
+        [HttpPost]
+        [Route("post-booking")]
+        public async Task<IActionResult> PostBooking([FromBody] Booking booking)
+        {
+            var jsonContent = JsonContent.Create(booking);
+            string route = _apiurl + "post-booking";
+            var response = await _httpClient.PostAsync(route, jsonContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseStream = await response.Content.ReadAsStreamAsync();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                var result = await JsonSerializer.DeserializeAsync<Centre>(responseStream, options);
+                return Ok(result);
+            }
+            else
+            {
+                string errorContent = await response.Content.ReadAsStringAsync();
+                string errorMessage = $"Error: {errorContent}";
+                return new BadRequestObjectResult(errorMessage);
+            }
+        }
     }
 }
