@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 
 namespace CentreBookingDatabase.Controllers
 {
@@ -104,9 +105,35 @@ namespace CentreBookingDatabase.Controllers
             string sql_script = "INSERT INTO Booking (GuestName, StartDate, EndDate, CentreName) VALUES (@GuestName, @StartDate, @EndDate, @CentreName);";
             SqlCommand sqlCommand = new SqlCommand(sql_script, conn);
             sqlCommand.Parameters.AddWithValue("@GuestName", booking.GuestName);
-            System.Diagnostics.Debug.WriteLine("Start Date: " + booking.StartDate.ToString());
-            sqlCommand.Parameters.AddWithValue("@StartDate", booking.StartDate.Value);
-            sqlCommand.Parameters.AddWithValue("@EndDate", booking.EndDate.Value);
+
+            string[] possibleFormats = { "d/M/yyyy", "dd/MM/yyyy" };
+
+            string startDate = booking.StartDate.ToString();
+            DateTime parsedStartDate;
+
+            if (DateTime.TryParseExact(startDate, possibleFormats, null, DateTimeStyles.None, out parsedStartDate))
+            {
+                string formattedStartDate = parsedStartDate.ToString("yyyy-MM-dd");
+                sqlCommand.Parameters.AddWithValue("@StartDate", formattedStartDate);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Invalid start date format");
+            }
+
+            string endDate = booking.EndDate.ToString();
+            DateTime parsedEndDate;
+
+            if (DateTime.TryParseExact(endDate, possibleFormats, null, DateTimeStyles.None, out parsedEndDate))
+            {
+                string formattedEndDate = parsedEndDate.ToString("yyyy-MM-dd");
+                sqlCommand.Parameters.AddWithValue("@EndDate", formattedEndDate);
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Invalid end date format");
+            }
+
             sqlCommand.Parameters.AddWithValue("@CentreName", booking.CentreName);
             Response response = new Response();
 

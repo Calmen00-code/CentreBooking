@@ -94,7 +94,7 @@
             {
                 if (takenBooking.EndDate >= booking.StartDate)
                 {
-                    ShowAlert("Start Date: " + booking.StartDate.ToString("dd-MM-yyyy") + " has already been booked!");
+                    ShowAlert("There was a booking registered on " + takenBooking.StartDate.ToString() + " until " + takenBooking.EndDate.ToString());
                     return false;
                 }
             }
