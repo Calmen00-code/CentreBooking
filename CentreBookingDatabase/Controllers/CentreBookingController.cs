@@ -105,6 +105,7 @@ namespace CentreBookingDatabase.Controllers
             string sql_script = "INSERT INTO Booking (GuestName, StartDate, EndDate, CentreName) VALUES (@GuestName, @StartDate, @EndDate, @CentreName);";
             SqlCommand sqlCommand = new SqlCommand(sql_script, conn);
             sqlCommand.Parameters.AddWithValue("@GuestName", booking.GuestName);
+            System.Diagnostics.Debug.WriteLine("booking guest name: " + booking.GuestName);
 
             string[] possibleFormats = { "d/M/yyyy", "dd/MM/yyyy" };
 

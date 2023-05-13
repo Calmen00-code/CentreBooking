@@ -1,6 +1,5 @@
 ﻿@page "/view-booking/{CentreName}"
 
-@using APIClasses
 @inject HttpClient HttpClient
 @inject IJSRuntime jsRuntime
 
@@ -19,8 +18,8 @@
                 <ul>
                     @foreach (var booking in group)
                     {
-                        <li>Start Date: @booking.StartDate.ToString()</li> 
-                        <li>End Date: @booking.EndDate.ToString()</li>
+                        <li>Start Date: @booking.StartDate.ToString("dd-MM-yyyy")</li> 
+                        <li>End Date: @booking.EndDate.ToString("dd-MM-yyyy")</li>
                     }
                 </ul>
             </li>

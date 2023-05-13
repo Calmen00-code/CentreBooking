@@ -36,7 +36,7 @@
 
     private async Task OnBookingSubmit()
     {
-        Booking booking = new Booking();
+        APIClasses.Booking booking = new APIClasses.Booking();
         booking.CentreName = CentreName;
         booking.GuestName = GuestName;
         booking.StartDate = StartDate;
@@ -47,6 +47,8 @@
         {
             string api_request_url = _apiurl + "post-booking";
 
+            // TODO
+            ShowConsole("Guestname: " + booking.GuestName);
 
             var response = await HttpClient.PostAsJsonAsync(api_request_url, booking);
             if (response.IsSuccessStatusCode)
@@ -61,7 +63,7 @@
         }
     }
 
-    private async Task<bool> UserCanBook(Booking booking)
+    private async Task<bool> UserCanBook(APIClasses.Booking booking)
     {
         if (StartDate < DateOnly.FromDateTime(DateTime.Now))
         {
@@ -81,13 +83,19 @@
             return false;
         }
 
+        if (GuestName.Equals(""))
+        {
+            ShowAlert("Guest name cannot be empty!");
+            return false;
+        }
+
         string api_request = _apiurl + "get-booking/" + CentreName;
         var response = await HttpClient.GetAsync(api_request);
 
         if (response.IsSuccessStatusCode)
         {
-            List<Booking> takenBookings = 
-                await response.Content.ReadFromJsonAsync<List<Booking>>();    
+            List<APIClasses.Booking> takenBookings = 
+                await response.Content.ReadFromJsonAsync<List<APIClasses.Booking>>();    
             foreach (var takenBooking in takenBookings)
             {
                 if (takenBooking.EndDate >= booking.StartDate)
@@ -114,8 +122,8 @@
 
         if (response.IsSuccessStatusCode)
         {
-            List<Booking> takenBookings = 
-                await response.Content.ReadFromJsonAsync<List<Booking>>();
+            List<APIClasses.Booking> takenBookings = 
+                await response.Content.ReadFromJsonAsync<List<APIClasses.Booking>>();
 
             if (takenBookings.Count == 0)
             {
@@ -123,8 +131,8 @@
             }
             else
             {
-                List<Booking> orderedByDate = takenBookings.OrderBy(date => date.EndDate).ToList();
-                Booking latestBooking = orderedByDate[orderedByDate.Count - 1];
+                List<APIClasses.Booking> orderedByDate = takenBookings.OrderBy(date => date.EndDate).ToList();
+                APIClasses.Booking latestBooking = orderedByDate[orderedByDate.Count - 1];
                 ShowAlert("Next available date is " + latestBooking.EndDate.AddDays(1).ToString("dd-MM-yyyy"));
                 // ShowAlert("Next available date is " + latestBooking.EndDate.ToString("dd-MM-yyyy"));
             }
@@ -140,5 +148,10 @@
     private void ShowAlert(string msg)
     {
         jsRuntime.InvokeVoidAsync("alert", msg);
+    }
+
+    private void ShowConsole(string msg)
+    {
+        jsRuntime.InvokeVoidAsync("console.log", msg);
     }
 }
