@@ -1,10 +1,10 @@
-﻿using CentreBookingApplication.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http.HttpResults;
+using APIClasses;
 
 namespace CentreBookingApplication.Controllers
 {

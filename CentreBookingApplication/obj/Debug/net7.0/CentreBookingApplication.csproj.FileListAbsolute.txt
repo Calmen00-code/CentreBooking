@@ -47,3 +47,5 @@ C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebA
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\APIClasses.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\CentreBookingApplication\bin\Debug\net7.0\APIClasses.pdb

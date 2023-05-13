@@ -1,0 +1,12 @@
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\bin\Debug\net7.0\APIClasses.deps.json
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\bin\Debug\net7.0\APIClasses.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\bin\Debug\net7.0\APIClasses.pdb
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\APIClasses.csproj.AssemblyReference.cache
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\APIClasses.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\APIClasses.AssemblyInfoInputs.cache
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\APIClasses.AssemblyInfo.cs
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\APIClasses.csproj.CoreCompileInputs.cache
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\APIClasses.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\refint\APIClasses.dll
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\APIClasses.pdb
+C:\Users\calme\OneDrive - Curtin University of Technology Australia\Desktop\WebApps\CentreBooking\APIClasses\obj\Debug\net7.0\ref\APIClasses.dll

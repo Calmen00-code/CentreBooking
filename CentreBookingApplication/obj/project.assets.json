@@ -629,6 +629,16 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "APIClasses/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/APIClasses.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/APIClasses.dll": {}
+        }
       }
     }
   },
@@ -1733,10 +1743,16 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "APIClasses/1.0.0": {
+      "type": "project",
+      "path": "../APIClasses/APIClasses.csproj",
+      "msbuildProject": "../APIClasses/APIClasses.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "APIClasses >= 1.0.0",
       "Blazored.Toast >= 4.1.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.4",
       "Microsoft.EntityFrameworkCore >= 7.0.5",
@@ -1772,7 +1788,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\APIClasses\\APIClasses.csproj": {
+              "projectPath": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\APIClasses\\APIClasses.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

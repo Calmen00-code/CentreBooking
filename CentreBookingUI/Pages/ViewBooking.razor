@@ -1,6 +1,6 @@
 ﻿@page "/view-booking/{CentreName}"
 
-@using CentreBookingUI.Models
+@using APIClasses
 @inject HttpClient HttpClient
 @inject IJSRuntime jsRuntime
 
@@ -19,8 +19,8 @@
                 <ul>
                     @foreach (var booking in group)
                     {
-                        <li>Start Date: @booking.StartDate.ToString("dd-MM-yyyy")</li> 
-                        <li>End Date: @booking.EndDate.ToString("dd-MM-yyyy")</li>
+                        <li>Start Date: @booking.StartDate.ToString()</li> 
+                        <li>End Date: @booking.EndDate.ToString()</li>
                     }
                 </ul>
             </li>
@@ -38,7 +38,7 @@ else
     [Parameter]
     public string CentreName { get; set; }
 
-    public List<Models.Booking> bookings { get; set; } = new List<Models.Booking>(); 
+    public List<APIClasses.Booking> bookings { get; set; } = new List<APIClasses.Booking>(); 
 
     protected override async Task OnInitializedAsync()
     {
@@ -48,7 +48,7 @@ else
 
         if (response.IsSuccessStatusCode)
         {
-            bookings = await response.Content.ReadFromJsonAsync<List<Models.Booking>>();    
+            bookings = await response.Content.ReadFromJsonAsync<List<APIClasses.Booking>>();    
         }
     }
 

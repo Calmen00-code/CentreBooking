@@ -1,4 +1,4 @@
-﻿namespace CentreBookingApplication.Models
+﻿namespace APIClasses
 {
     public class Booking
     {

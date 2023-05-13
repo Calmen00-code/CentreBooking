@@ -1,7 +1,5 @@
 ﻿@page "/book-page/{CentreName}"
 
-@using CentreBookingUI.Models
-
 @inject HttpClient HttpClient
 @inject IJSRuntime jsRuntime
 @inject NavigationManager NavigationManager
@@ -38,7 +36,7 @@
 
     private async Task OnBookingSubmit()
     {
-        Models.Booking booking = new Models.Booking();
+        Booking booking = new Booking();
         booking.CentreName = CentreName;
         booking.GuestName = GuestName;
         booking.StartDate = StartDate;
@@ -63,7 +61,7 @@
         }
     }
 
-    private async Task<bool> UserCanBook(Models.Booking booking)
+    private async Task<bool> UserCanBook(Booking booking)
     {
         if (StartDate < DateOnly.FromDateTime(DateTime.Now))
         {
@@ -88,8 +86,8 @@
 
         if (response.IsSuccessStatusCode)
         {
-            List<Models.Booking> takenBookings = 
-                await response.Content.ReadFromJsonAsync<List<Models.Booking>>();    
+            List<Booking> takenBookings = 
+                await response.Content.ReadFromJsonAsync<List<Booking>>();    
             foreach (var takenBooking in takenBookings)
             {
                 if (takenBooking.EndDate >= booking.StartDate)
@@ -116,8 +114,8 @@
 
         if (response.IsSuccessStatusCode)
         {
-            List<Models.Booking> takenBookings = 
-                await response.Content.ReadFromJsonAsync<List<Models.Booking>>();
+            List<Booking> takenBookings = 
+                await response.Content.ReadFromJsonAsync<List<Booking>>();
 
             if (takenBookings.Count == 0)
             {
@@ -125,8 +123,8 @@
             }
             else
             {
-                List<Models.Booking> orderedByDate = takenBookings.OrderBy(date => date.EndDate).ToList();
-                Models.Booking latestBooking = orderedByDate[orderedByDate.Count - 1];
+                List<Booking> orderedByDate = takenBookings.OrderBy(date => date.EndDate).ToList();
+                Booking latestBooking = orderedByDate[orderedByDate.Count - 1];
                 ShowAlert("Next available date is " + latestBooking.EndDate.AddDays(1).ToString("dd-MM-yyyy"));
                 // ShowAlert("Next available date is " + latestBooking.EndDate.ToString("dd-MM-yyyy"));
             }
