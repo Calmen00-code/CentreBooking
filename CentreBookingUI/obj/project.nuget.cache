@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "PLlNJFddc3e8D1P3l7G8Dt3x59qhgThcb2IZarawt+DZUTbgJGC3T6hjekMbmpZUVGXm2ZYpbSw65P2r7wKVaw==",
+  "dgSpecHash": "YecQBUBgI7cpPRHVP1ODi3NeN4PZQXrz8oJYuKqD8ni75EFw3rw1pFeushORo1KqBwIeDM0dPOkYi6PRoCOA8g==",
   "success": true,
   "projectFilePath": "C:\\Users\\calme\\OneDrive - Curtin University of Technology Australia\\Desktop\\WebApps\\CentreBooking\\CentreBookingUI\\CentreBookingUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\calme\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\calme\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\calme\\.nuget\\packages\\blazored.toast\\4.1.0\\blazored.toast.4.1.0.nupkg.sha512",
+    "C:\\Users\\calme\\.nuget\\packages\\bootstrap\\5.2.3\\bootstrap.5.2.3.nupkg.sha512",
     "C:\\Users\\calme\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\calme\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.1\\microsoft.aspnetcore.authorization.7.0.1.nupkg.sha512",
     "C:\\Users\\calme\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.1\\microsoft.aspnetcore.components.7.0.1.nupkg.sha512",

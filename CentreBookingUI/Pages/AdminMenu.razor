@@ -15,18 +15,20 @@
 @* Button for register new centre is hidden when the form to register new centre is shown *@
 @if (!IsRegistrationFormVisible)
 {
-    <button @onclick="AddCentre">Register New Centre</button>
+    <button class="btn btn-primary" @onclick="AddCentre">Register New Centre</button>
 }
 
 @if (IsRegistrationFormVisible)
 {
     <div>
         <form @onsubmit="OnCentreSubmit">
-            <input type="text" placeholder="Centre Name" @bind="NewCentreName"/>
-            <button type="submit">Confirm</button>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Centre Name" @bind="NewCentreName"/>
+            </div>
+            <button class="btn btn-primary" type="submit">Confirm</button>
         </form>
         <br/>
-        <button @onclick="CancelAdd">Cancel</button>
+        <button class="btn btn-secondary" @onclick="CancelAdd">Cancel</button>
     </div>
 }
 

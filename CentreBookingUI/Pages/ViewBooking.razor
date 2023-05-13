@@ -7,19 +7,19 @@
 
 @if (bookings.Any())
 {
-    <ul>
+    <ul class="list-group">
         @{
             var guestGroups = bookings.GroupBy(b => b.GuestName);
         }
         @foreach (var group in guestGroups)
         {
-            <li>
-                @group.Key
-                <ul>
+            <li class="list-group-item">
+                <strong>@group.Key</strong>
+                <ul class="list-group">
                     @foreach (var booking in group)
                     {
-                        <li>Start Date: @booking.StartDate.ToString("dd-MM-yyyy")</li> 
-                        <li>End Date: @booking.EndDate.ToString("dd-MM-yyyy")</li>
+                        <li class="list-group-item">Start Date: @booking.StartDate.ToString("dd-MM-yyyy")</li> 
+                        <li class="list-group-item">End Date: @booking.EndDate.ToString("dd-MM-yyyy")</li>
                     }
                 </ul>
             </li>

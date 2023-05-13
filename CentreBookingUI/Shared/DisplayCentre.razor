@@ -3,6 +3,7 @@
 @inject IJSRuntime jsRuntime
 @inject HttpClient HttpClient
 
+@*
 <br />
 @if (centres == null)
 {
@@ -39,6 +40,45 @@ else if (centres != null && centres.Any())
         }
     </ul>
 }
+<br />
+*@
+
+<br />
+
+@if (centres == null)
+{
+    <p>No list available</p>
+}
+else if (centres != null && !centres.Any())
+{
+    <p>Loading centres...</p>
+}
+else if (centres != null && centres.Any())
+{
+    <ul class="list-group">
+        @if (isAdmin)
+        {
+            @foreach (var centre in centres)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>@centre.CentreName</span>
+                    <button class="btn btn-primary" @onclick="(e) => ViewBooking(centre.CentreName)">View Booking(s)</button>
+                </li>
+            }
+        }
+        else
+        {
+            @foreach (var centre in centres)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>@centre.CentreName</span> 
+                    <button class="btn btn-primary" @onclick="(e) => BookCentre(centre.CentreName)">Book</button>
+                </li>
+            }
+        }
+    </ul>
+}
+
 <br />
 
 @code {

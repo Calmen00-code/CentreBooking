@@ -7,16 +7,23 @@
 <h3>Booking for @CentreName</h3>
 
 <form @onsubmit="OnBookingSubmit">
-    <label for="guest-name">Guest Name</label>
-    <input id="guest-name" type="text" @bind-value="GuestName"/>
-    <label for="start-date">Start Date</label>
-    <InputDate id="start-date" @bind-Value="StartDate"/>
-    <label for="end-date">End Date</label>
-    <InputDate id="end-date" @bind-Value="EndDate"/>
-    <button type="submit">Confirm</button>
+    <div class="form-group">
+        <label for="guest-name">Guest Name</label>
+        <input id="guest-name" class="form-control" type="text" @bind-value="GuestName" />
+    </div>
+    <div class="form-group">
+        <label for="start-date">Start Date</label>
+        <InputDate id="start-date" class="form-control" @bind-Value="StartDate" />
+    </div>
+    <div class="form-group">
+        <label for="end-date">End Date</label>
+        <InputDate id="end-date" class="form-control" @bind-Value="EndDate" />
+    </div>
+    <button class="btn btn-primary" type="submit">Confirm</button>
 </form>
 <br />
-<button @onclick="NextAvailableBooking">Next Available Booking</button>
+<button class="btn btn-secondary" @onclick="NextAvailableBooking">Next Available Booking</button>
+
 
 @code {
     private static readonly string _apiurl = "http://localhost:5249/api/CentreBookingApplication/";

@@ -3,12 +3,15 @@
 
 <h3>Admin</h3>
 
-<input placeholder="admin" type="text" @bind="admin"/>
+<div class="form-group">
+    <input class="form-control" placeholder="admin" type="text" @bind="admin"/>
+</div>
+<div class="form-group">
+    <input class="form-control" placeholder="password" type="password" @bind="password"/>
+</div>
 <br />
-<input placeholder="password" type="password" @bind="password"/>
-<br />
-<br />
-<button @onclick="@(() => isAdmin())">Login</button>
+<button class="btn btn-primary" @onclick="@(() => isAdmin())">Login</button>
+
 
 @code {
     private static readonly string ADMIN = "admin";

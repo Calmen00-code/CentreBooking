@@ -17,7 +17,8 @@
           "Microsoft.EntityFrameworkCore.Tools": "7.0.5",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Newtonsoft.Json": "13.0.3",
-          "System.Net.Http.Json": "7.0.1"
+          "System.Net.Http.Json": "7.0.1",
+          "bootstrap": "5.2.3"
         },
         "runtime": {
           "CentreBookingUI.dll": {}
@@ -70,6 +71,7 @@
           }
         }
       },
+      "bootstrap/5.2.3": {},
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
@@ -765,6 +767,13 @@
       "sha512": "sha512-k12tFBnMMU67bPoBKLTuR2POcYOz02UtT8Lzyeu8fMv587nO8VaWqFfRMJ8Hxkb1SbxL8lY2WiK9tWAZ934khQ==",
       "path": "blazored.toast/4.1.0",
       "hashPath": "blazored.toast.4.1.0.nupkg.sha512"
+    },
+    "bootstrap/5.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tZZrH4HdqBr/oeUlGoc2KliYlwXeN3qyhKgc1B5dc585+lnMkcD4A5yIX2NmNoXCCagQQiQGKn7A97sWoo2AOw==",
+      "path": "bootstrap/5.2.3",
+      "hashPath": "bootstrap.5.2.3.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
